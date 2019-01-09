@@ -19,12 +19,13 @@
             </a>
         </header>
         <div class="background--ship-grey">
-                <div class="wrapper">
-                    <div class="padding-top--1 padding-bottom--1">
-                        <p class="margin-bottom--0 margin-top--0 font-xsmall"><strong class="banner__tag">Warning</strong> this is a prototype. The content may not be complete or accurate.</p>
-                    </div>
+            <div class="wrapper">
+                <div class="padding-top--1 padding-bottom--1">
+                    <p class="margin-bottom--0 margin-top--0 font-xsmall"><strong class="banner__tag">Warning</strong>
+                        this is a prototype. The content may not be complete or accurate.</p>
                 </div>
             </div>
+        </div>
         <div class="page-intro background--indigo padding-top-md--4">
             <div class="pl-wrap__inner padding-top-sm--4">
                 <div class="wrapper">
@@ -38,7 +39,7 @@
             <div class="col col--md-one col--lg-one">
                 <h2>Filter by domain
                     <select id="myInput" title="Domain" onchange="selectDomain()">
-                        <option selected disabled>Choose one</option>
+                        <option>All domains</option>
                         <option>Participation</option>
                         <option>Health</option>
                         <option>Justice and Personal Security</option>
@@ -55,7 +56,7 @@
                 <h2 class="margin-top-lg--2 margin-top-md--2 margin-top-sm--1">Toggle dimensions covered by data:</h2>
                 <div class="col-wrap">
                     <div class="col col--md-6 col--lg-6 margin-left-md--1">
-                        <button class="btn btn--secondary btn--secondary-active margin-top-lg--1 margin-top-md--1 margin-top-sm--1"
+                        <button id="showall" class="btn btn--secondary margin-top-lg--1 margin-top-md--1 margin-top-sm--1"
                             onclick="filterSelection('')"> Show
                             all</button>
                     </div>
@@ -1997,10 +1998,15 @@
 
             <script>
                 function selectDomain() {
+
                     // Declare variables 
                     let input, filter, table, tr, td, i, txtValue;
                     input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
+                    if (input.value === "All domains") {
+                        filter = ""
+                    } else {
+                        filter = input.value.toUpperCase();
+                    }
                     table = document.getElementById("equalities");
                     tr = table.getElementsByTagName("tr");
 
@@ -2021,6 +2027,7 @@
                 function filterSelection(c) {
                     // Declare variables 
                     let input, filter, table, tr, td, i, txtValue;
+
                     input = c;
                     filter = input.toUpperCase();
                     table = document.getElementById("equalities");
